@@ -1,0 +1,14 @@
+.cuerpo{
+    display: grid;
+    grid-template-rows: 10% 4% 7% 4% 75%;
+    width: 100%;
+    height: 100%;
+
+}
+.navegacion{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+     
+}
