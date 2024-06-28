@@ -1,0 +1,48 @@
+<div class="div-formulario">
+    <div class="formulario">
+      <div class="tittle">
+         <p>Completa tus datos</p>
+      </div>
+      <div class="name-lastname">
+        <div class="nombre">
+            <label class="form-label">
+                Nombre de perfil
+            </label>
+            <input type="text" class="form-control" placeholder="Ingrese el nombre de su perfil">
+        </div>
+      </div> 
+      <div class="intereses">
+        <label class="form-label">
+          Selecciona tus intereses
+        </label>
+        <div class="main-card">
+          <div class="small-cards-container">
+            <div *ngFor="let card of smallCards" class="small-card">
+              <span>{{ card.content }}</span>
+              <button (click)="removeCard(card.id)">✖</button>
+            </div>
+          </div>
+        </div>
+        <div class="buscador">
+          <form [formGroup]="form">
+            <select class="form-select" formControlName="selectedOption" (change)="addCard()">
+              <option value="" disabled selected>Buscar</option>
+              <option *ngFor="let option of options" [value]="option">{{ option }}</option>
+            </select>
+          </form>
+        </div>
+      </div>
+      <div class="descripcion">
+          <label class="form-label">
+               Descripcion
+          </label>
+          <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+            <label for="floatingTextarea2">Cuentanos sobre ti</label>
+          </div>
+      </div>
+      <div class="boton">
+        <button type="button" class="btn btn-dark">Siguiente</button>
+      </div>
+    </div> 
+</div> 

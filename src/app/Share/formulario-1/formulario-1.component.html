@@ -1,0 +1,131 @@
+<div class="div-formulario">
+    <div class="formulario">
+      <div class="tittle">
+         <p>Crear una cuenta de usuario</p>
+      </div>
+      <div class="name-lastname">
+        <div class="nombre">
+            <label class="form-label">
+                Nombres
+            </label>
+            <input type="text" class="form-control" placeholder="Ingrese su nombre">
+        </div>
+        <div class="apellido">
+            <label class="form-label">
+                Apellido Paterno y Materno 
+            </label>
+            <input type="text" class="form-control" placeholder="Ingrese sus apellidos">
+        </div>
+      </div> 
+      <div class="correo">
+        <label class="form-label">
+            Correo electronico
+        </label>
+        <input type="text" class="form-control" placeholder="Ingrese su correo electronico">
+      </div>
+      <div class="contraseña">
+        <div class="eye-pass">
+          <label class="form-label">
+            Contraseña
+        </label>
+        <img src="eye.ico" id="eye">
+        </div>
+      </div>
+      <div class="contraseña2">
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Ingrese su contraseña">
+        <span>Utilice 8 o más caracteres con una combinación de letras y números </span>
+      </div>
+      <div class="numero">
+        <label class="form-label">
+          Numero de celular
+        </label>
+        <input type="number" class="form-control" placeholder="Ingrese su numero de celular">
+      </div>
+      <div class="genero">
+        <label class="form-label">
+          ¿Cual es tu genero?
+        </label>
+        <div class="elicoptero">
+          <label>
+            <input type="radio" name="menu" value="option1"> Femenino
+          </label>
+          <label>
+            <input type="radio" name="menu" value="option2"> Masculino
+          </label>
+          <label>
+            <input type="radio" name="menu" value="option3"> No-Binario
+          </label>
+        </div>
+      </div>
+      <div class="fechaN">
+        <label class="form-label">
+          Fecha de nacimiento
+        </label>
+        <div class="group-f">
+          <div>
+            <label class="form-label">
+              Dia
+            </label>
+            <select id="day" class="form-select">
+              <option *ngFor="let day of days" [value]="day">{{ day }}</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label">
+              Mes
+            </label>
+            <select id="mes" class="form-select">
+              <option value="1">Enero</option>
+              <option value="2">Febrero</option>
+              <option value="3">Marzo</option>
+              <option value="4">Abril</option>
+              <option value="5">Mayo</option>
+              <option value="6">Junio</option>
+              <option value="7">Julio</option>
+              <option value="8">Agosto</option>
+              <option value="9">Septiembre</option>
+              <option value="10">Octubre</option>
+              <option value="11">Noviembre</option>
+              <option value="12">Diciembre</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label">
+              Año
+            </label>
+            <select id="año" class="form-select">
+              <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="departamento">
+        <label class="form-label">
+          Departamento
+        </label>
+        <select id="depart" class="form-select">
+          <option value="1">Potosi</option>
+          <option value="2">Oruro</option>
+          <option value="3">La Paz</option>
+          <option value="4">Cochabamba</option>
+          <option value="5">Beni</option>
+          <option value="6">Pando</option>
+          <option value="7">Tarija</option>
+          <option value="8">Sucre</option>
+          <option value="9">Santa Cruz</option>
+        </select>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          Compartir mis datos de registro con nuestros proveedores de contenido para fines de marketing.
+        </label>
+      </div>
+      <div class="link">
+        <p>Al crear una cuenta acepta los <a href="">Terminos de uso</a> y <a href="">Politica de privacidad</a></p>
+      </div>
+      <div class="boton">
+        <button type="button" class="btn btn-dark">Siguiente</button>
+      </div>
+    </div>
+  </div>

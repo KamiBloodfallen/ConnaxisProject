@@ -1,0 +1,138 @@
+.div-formulario{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    
+    
+   }
+   .tittle{
+       display: flex;
+       justify-content: center;
+       margin-bottom: 40px;
+   }
+   .tittle p{
+       color: #000000;
+       font-size: 18px;
+       font-weight: 700;
+   }
+   input[type="number"]::-webkit-inner-spin-button,
+   input[type="number"]::-webkit-outer-spin-button {
+       -webkit-appearance: none;
+   }
+   input[type="checkbox"] {
+       width: 18px;
+       height: 18px;
+     }
+   .form-check-input:checked{
+       background-color: #111111;
+       border-color: #111111;
+   }
+   .form-control{
+    border-radius: 12px;
+    height: 56px;
+   }
+   .form-select{
+       border-radius: 12px;
+       height: 56px;
+   }
+   .formulario{
+       width: 600px;
+       font-family: 'Poppins';
+       padding: 25px;
+       color: #666666;
+   }
+   .name-lastname{
+       display: flex;
+       flex-direction: row;
+       justify-content: space-between;
+       margin-bottom:20px ;
+   }
+   .nombre{
+       width: 200px;
+   }
+   .apellido{
+       width: 326px;
+   }
+   .correo{
+       margin-bottom:20px ;
+   }
+   .eye-pass{
+       display: flex;
+       justify-content: space-between;
+   }
+   .contraseña2{
+       margin-bottom: 20px;
+   }
+   .contraseña2 span{
+       font-size: 14px;
+   }
+   .numero{
+       margin-bottom: 20px;
+   }
+   .genero{
+       margin-bottom: 20px;
+   }
+   .elicoptero{
+       display: flex;
+       justify-content: space-between;
+   }
+   .elicoptero input{
+       width: 16px;
+       height: 16px;
+       margin-right: 10px;
+   }
+   .elicoptero label{
+       display: flex;
+       align-items: center;
+   }
+   .fechaN{
+       margin-bottom: 20px;
+   }
+   .group-f{
+       display: flex;
+       flex-direction: row;
+       justify-content: space-between;
+   }
+   .form-check label{
+       font-size: 15px;
+       color: #555555;
+   }
+   .departamento{
+       margin-bottom: 20px;
+   }
+   .form-check{
+       margin-bottom: 20px;
+   }
+   .link{
+       display: flex;
+       flex-direction: row;
+       font-size:15px ;
+   }
+   .boton{
+       display: flex;
+       justify-content: center;
+       margin-top: 50px;
+   }
+   .btn-dark{
+       width: 263px;
+       height: 64px;
+       border-radius: 16px;
+       font-size: 22px;
+   }
+   #eye{
+       width: 24px;
+       height: 24px;
+       margin-right: 8px;
+   }
+   #day{
+       width: 150px;
+   }
+   #mes{
+       width: 180px;
+   }
+   #año{
+       width: 180px;
+   }
+   #depart{
+       width: 350px;
+   }

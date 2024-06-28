@@ -1,0 +1,79 @@
+.div-formulario{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    
+    
+   }
+.tittle{
+       display: flex;
+       justify-content: center;
+       margin-bottom: 40px;
+}
+.tittle p{
+       color: #000000;
+       font-size: 18px;
+       font-weight: 700; 
+}
+.form-control{
+    border-radius: 12px;
+    height: 56px;
+}
+.formulario{
+    width: 600px;
+    font-family: 'Poppins';
+    padding: 25px;
+    color: #666666;
+}
+.form-select{
+    border-radius: 12px;
+    height: 56px;
+    width: 220px;
+}
+.intereses{
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+.main-card{
+    display: flex;
+    width: 550px;
+    height: 180px;
+    border-radius: 12px;
+    border: 1px solid #dee2e6;
+    padding: 16px;
+    flex-flow: row wrap;
+}
+.buscador{
+    margin-top: 20px;
+}
+.small-card{
+    display: flex;
+    width: 150px;
+    padding: 5px 10px 5px 10px;
+    height: 35px;
+    border-radius: 12px;
+    border: 1px solid #dee2e6;
+    justify-content: space-between;
+}
+.small-card button{
+    background-color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+}
+.small-cards-container{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+.boton{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.btn-dark{
+    width: 263px;
+    height: 64px;
+    border-radius: 16px;
+    font-size: 22px;
+}

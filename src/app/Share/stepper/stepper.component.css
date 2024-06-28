@@ -1,0 +1,54 @@
+
+.cont{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+ }
+.stepper {
+    display: flex;
+    justify-content: space-between;
+    width:980px ;
+    padding: 20px;
+   
+  }
+  
+  .step {
+    text-align: center;
+    position: relative;
+    flex: 1;
+  }
+  
+  .line {
+    height: 2px;
+    background-color: #666666;
+    flex: 1;
+    margin: 0 5px;
+    align-content: start;
+  }
+  
+  .step-number {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 10px;
+    font-size: 16px;
+    color: #fff;
+  }
+  
+  .step.completed .step-number {
+    background-color: #333333;
+  }
+  
+  .step-title {
+    font-size: 16px;
+    color: #666666;
+    font-family: 'Poppins';
+  }
+  
+  .step.completed .step-title {
+    color: #333333;
+  }
