@@ -1,0 +1,74 @@
+.div-formulario{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    
+    
+   }
+   .tittle{
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       margin-bottom: 40px;
+       background-color: #111111;
+       border-top-left-radius: 2vh;
+       border-top-right-radius: 2vh;
+       height: 70px;
+    
+       
+   }
+   .tittle p{
+       color: #ffffff;
+       font-size: 28px;
+       font-weight: 400;
+       margin: 0;
+     
+     }
+   .form-control{
+    border-radius: 12px;
+    height: 56px;
+   }
+   .formulario{
+       width: 600px;
+       font-family: 'Poppins';
+       padding: 50px;
+       color: #666666;
+   }
+
+   .correo{
+       margin-bottom:20px ;
+   }
+   .eye-pass{
+       display: flex;
+       justify-content: space-between;
+   }
+   .contraseña2{
+       margin-bottom: 20px;
+   }
+   .contraseña2 span{
+       font-size: 14px;
+   }
+   
+   .link{
+       display: flex;
+       flex-direction: row;
+       font-size:15px ;
+       
+   }
+   .boton{
+       display: flex;
+       justify-content: center;
+       margin-top: 50px;
+   }
+   .btn-dark{
+       width: 263px;
+       height: 64px;
+       border-radius: 16px;
+       font-size: 22px;
+   }
+   #eye{
+       width: 24px;
+       height: 24px;
+       margin-right: 8px;
+   }
+   
