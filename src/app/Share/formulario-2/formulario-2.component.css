@@ -37,7 +37,7 @@
 .main-card{
     display: flex;
     width: 550px;
-    height: 180px;
+    min-height: 180px;
     border-radius: 12px;
     border: 1px solid #dee2e6;
     padding: 16px;
@@ -48,18 +48,21 @@
 }
 .small-card{
     display: flex;
-    width: 150px;
+    /*width: 150px;*/
     padding: 5px 10px 5px 10px;
     height: 35px;
     border-radius: 12px;
     border: 1px solid #dee2e6;
     justify-content: space-between;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 .small-card button{
     background-color: #fff;
     border: none;
     border-radius: 12px;
     padding: 0;
+    margin-left: 5px;
 }
 .small-cards-container{
     display: flex;

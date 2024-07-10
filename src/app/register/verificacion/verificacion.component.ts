@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { StepperComponent } from '../../Share/stepper/stepper.component';
 
 @Component({
   selector: 'app-verificacion',
   standalone: true,
-  imports: [],
+  imports: [StepperComponent],
   templateUrl: './verificacion.component.html',
   styleUrl: './verificacion.component.css'
 })

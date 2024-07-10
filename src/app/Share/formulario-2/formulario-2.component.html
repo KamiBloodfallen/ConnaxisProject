@@ -1,4 +1,5 @@
 <div class="div-formulario">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="formulario">
       <div class="tittle">
          <p>Completa tus datos</p>
@@ -8,7 +9,7 @@
             <label class="form-label">
                 Nombre de perfil
             </label>
-            <input type="text" class="form-control" placeholder="Ingrese el nombre de su perfil">
+            <input type="text" class="form-control" formControlName="Nombre_perfil" placeholder="Ingrese el nombre de su perfil">
         </div>
       </div> 
       <div class="intereses">
@@ -19,7 +20,7 @@
           <div class="small-cards-container">
             <div *ngFor="let card of smallCards" class="small-card">
               <span>{{ card.content }}</span>
-              <button (click)="removeCard(card.id)">✖</button>
+              <button type="button" (click)="removeCard(card.id)">✖</button>
             </div>
           </div>
         </div>
@@ -37,12 +38,13 @@
                Descripcion
           </label>
           <div class="form-floating">
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" formControlName="Descripcion" style="height: 100px"></textarea>
             <label for="floatingTextarea2">Cuentanos sobre ti</label>
           </div>
       </div>
       <div class="boton">
-        <button type="button" class="btn btn-dark">Siguiente</button>
+        <button type="submit" class="btn btn-dark">Siguiente</button>
       </div>
     </div> 
+  </form>
 </div> 
