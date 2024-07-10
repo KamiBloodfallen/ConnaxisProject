@@ -6,6 +6,7 @@ nav{
     border-radius: 2vh;
     height: 100%;
     
+    
    
 }
 .navBar{
@@ -16,8 +17,13 @@ nav{
     padding-left: 0;
     display: flex;
     justify-content: center;
+
     /*
-    gap: 10%;  
+    para evitar el margen de abajo de 16 px que aparecio de la nada
+    */
+    margin: 0;
+    /*
+    gap: 10%;   
    */
 
     
@@ -31,4 +37,11 @@ nav{
     width: 100%;
     font-size: 0.9rem;
     color: #666666;
+
+
+    align-content: center;
+    /*
+    para arreglar lo del margen que aparecio de la nada
+    */
+    
 }

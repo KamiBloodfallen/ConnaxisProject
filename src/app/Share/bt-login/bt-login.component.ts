@@ -1,11 +1,15 @@
 import { Component,Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink,  } from '@angular/router';
+/*
+import { PruebaService } from '../../Services/Auth.service';
+*/
+
 
 @Component({
   selector: 'app-bt-login',
   standalone: true,
-  imports: [CommonModule,RouterLink],
+  imports: [CommonModule, RouterLink],
   templateUrl: './bt-login.component.html',
   styleUrl: './bt-login.component.css'
 })
@@ -14,4 +18,17 @@ export class BtLoginComponent {
 @Input() fontColor: string = '#000'; 
 @Input() backgroundColor: string = '#fff';
 @Input() link: string = '/';
+
+/*
+constructor (private pruebaService: PruebaService){}
+
+ ngOnClick (): void {
+   this.pruebaService.obtenerDatos().subscribe((data) => {
+     console.log(data);
+   });
+ }
+*/
+ /*
+En el HTML (click)= "ngOnClick()" para que funcione lo de arriba
+ */
 }

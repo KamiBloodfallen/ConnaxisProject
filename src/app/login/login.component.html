@@ -1,1 +1,34 @@
-<p>login works!</p>
+<div class="div-formulario">
+  <form [formGroup]="form()" (ngSubmit)="onSubmit()">
+    <div class="formulario">
+      <div class="tittle">
+        <p>Welcome</p>
+      </div>  
+      <div class="correo">
+        <label class="form-label">
+          Correo electronico
+        </label>
+        <input type="text" class="form-control" formControlName="correo" placeholder="Ingrese su correo electronico">
+      </div>
+      <div class="contraseña">
+        <div class="eye-pass">
+          <label class="form-label">
+            Contraseña
+          </label>
+          <img src="eye.ico" id="eye">
+        </div>
+      </div>
+      <div class="contraseña2">
+        <input type="password" class="form-control" id="exampleInputPassword1" formControlName="contraseña" placeholder="Ingrese su contraseña"> 
+      </div>
+      
+      <div class="link">
+        <p>Si no tienes una cuenta pulse <a href="/register">Aqui.</a></p>
+      </div>
+      <div class="boton">
+        <button type="submit" class="btn btn-dark">Sign in</button>
+      </div>
+    </div>
+  </form>
+  <pre>{{ form().value | json}}</pre>
+  </div>
