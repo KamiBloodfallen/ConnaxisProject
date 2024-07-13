@@ -15,8 +15,8 @@ export class LoginComponent implements OnInit{
 
    form = signal<FormGroup>(
     new FormGroup({
-      correo: new FormControl('', [Validators.required]),
-      contraseña: new FormControl('',[Validators.required]),
+      CorreoElectronico: new FormControl('', [Validators.required]),
+      password: new FormControl('',[Validators.required]),
     })
   );
   errorMessage: string | null = null;
@@ -30,10 +30,16 @@ export class LoginComponent implements OnInit{
   }
 
   onSubmit() {
-    if (this.form().value.valid) {
-      const { correo, contraseña } = this.form().value;
-
-      this.authService.login(correo, contraseña)
+    if (this.form().valid) {
+      const { CorreoElectronico, password } = this.form().value;
+      const data = {
+        CorreoElectronico: CorreoElectronico,
+        password: password
+        };
+      console.log("enviando datos");
+      console.log(CorreoElectronico,password);
+      console.log(this.form().value);
+      this.authService.login(data)
         .subscribe({
           next: (response) => {
             if (response.token) {
@@ -49,7 +55,10 @@ export class LoginComponent implements OnInit{
             this.errorMessage = 'Un error ha ocurrido, intenta de nuevo.';
           }
         });
+    }else{
+      
     }
+    console.log("enviando datos2");
   }
 }
   

@@ -3,7 +3,6 @@
     align-items: center;
     display: flex;
     
-    
    }
    .tittle{
        display: flex;
@@ -33,6 +32,8 @@
        font-family: 'Poppins';
        padding: 50px;
        color: #666666;
+       
+    
    }
 
    .correo{
