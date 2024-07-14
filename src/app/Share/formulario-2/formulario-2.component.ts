@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { ApiService } from '../../service/api.service';
 import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
+import { UserService } from '../../service/user.service';
+import { Usuario } from '../../Models/usuario.model';
 
 interface SmallCard {
   id: number;
@@ -19,7 +21,51 @@ interface SmallCard {
 })
 export class Formulario2Component {
   options = [
-    'Familia', 'Deportes', 'Comida', 'Turismo', 'Baile', 'Fitness'
+    'Moda y Belleza',
+    'Ropa y accesorios',
+    'Maquillaje y cuidado de la piel',
+    'Tendencias de moda',
+    'Estilo personal',
+    'Fitness y Bienestar',
+    'Entrenamientos y rutinas de ejercicio',
+    'Nutrición y dietas',
+    'Meditación y mindfulness',
+    'Estilo de vida saludable',
+    'Viajes',
+    'Destinos turísticos',
+    'Consejos de viaje',
+    'Gastronomía',
+    'Recetas y cocina',
+    'Restaurantes y reseñas culinarias',
+    'Comida saludable',
+    'Fotografía de alimentos',
+    'Gaming',
+    'Reseñas de videojuegos',
+    'Transmisiones en vivo (streaming)',
+    'Consejos y trucos de juegos',
+    'E-sports y competiciones',
+    'Entretenimiento',
+    'Reseñas de películas y series',
+    'Música y conciertos',
+    'Diseño de interiores',
+    'Proyectos de bricolaje',
+    'Consejos de organización y limpieza',
+    'Educación y Desarrollo Personal',
+    'Consejos de estudio y productividad',
+    'Habilidades y desarrollo profesional',
+    'Idiomas y aprendizaje',
+    'Familia y Crianza',
+    'Consejos para padres',
+    'Actividades familiares',
+    'Educación infantil',
+    'Arte y Creatividad',
+    'Fotografía y videografía',
+    'Pintura y dibujo',
+    'Manualidades y artesanías',
+    'Sostenibilidad y Medio Ambiente',
+    'Vida sostenible',
+    'Conservación y ecología',
+    'Productos ecológicos'
   ];
   
   smallCards: SmallCard[] = [];
@@ -29,7 +75,7 @@ export class Formulario2Component {
   
   listaInteres:string[]=[];
 
-  constructor(private fb: FormBuilder, private apiService: ApiService,private router: Router) {
+  constructor(private fb: FormBuilder, private apiService: ApiService,private router: Router,private userService:UserService) {
     this.form = this.fb.group({
       Nombre_perfil: [''],
       Descripcion: [''],
@@ -60,13 +106,10 @@ export class Formulario2Component {
     }
   }
 
-  checarInterest(interest: string): boolean {
-    return this.listaInteres.includes(interest);
-  }
-
   onSubmit() {
-    const idusu = 6;
+    const idusu = 3;
     const formData = this.form.value;
+    const lista=this.listaInteres.join(", ");
     const descripcion ={ 
       Descripcion:formData.Descripcion
     };
@@ -76,16 +119,12 @@ export class Formulario2Component {
 
     const intereces={
       IdUsu: idusu,
-      Familia: this.checarInterest('Familia'),
-      Deportes: this.checarInterest('Deportes'),
-      Comida: this.checarInterest('Comida'),
-      Turismo: this.checarInterest('Turismo'),
-      Baile: this.checarInterest('Baile'),
-      Fitness: this.checarInterest('Fitness')
+      Intereses_Usuario:lista
     }
 
     console.log("Estos son los datos registrados", formData);
-/*
+    console.log("Estos son los datos registrados", lista);
+
     const descripcionRequest = this.apiService.actuDescripcionGenerador(descripcion, idusu);
     const nombrePerfilRequest = this.apiService.actuNombrePerfil(nombrePerfil, idusu);
     const interesesRequest = this.apiService.registrarInteres(intereces);
@@ -93,13 +132,14 @@ export class Formulario2Component {
     forkJoin([descripcionRequest, nombrePerfilRequest, interesesRequest]).subscribe(
       response => {
         console.log('Todas las solicitudes fueron exitosas:', response);
+
+        this.router.navigate(['/profile']);
       },
       error => {
         console.error('Error en alguna de las solicitudes:', error);
       }
     );
-*/
-    this.router.navigate(['/profile']);
+    
 
   }
 }

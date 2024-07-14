@@ -3,8 +3,11 @@
     align-items: center;
     display: flex;
     
-    
+  
    }
+.div-formulario small{
+     color: red;
+}
    .tittle{
        display: flex;
        justify-content: center;
@@ -59,6 +62,10 @@
    .eye-pass{
        display: flex;
        justify-content: space-between;
+       
+   }
+   .eye-pass img{
+    cursor: pointer;
    }
    .contraseña2{
        margin-bottom: 20px;
@@ -68,9 +75,11 @@
    }
    .numero{
        margin-bottom: 20px;
+       margin-top: 20px;
    }
    .genero{
        margin-bottom: 20px;
+      
    }
    .elicoptero{
        display: flex;

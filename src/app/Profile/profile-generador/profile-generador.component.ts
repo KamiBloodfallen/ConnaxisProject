@@ -3,6 +3,7 @@ import { NavGeneradorComponent } from '../../Share/nav-generador/nav-generador.c
 import { HeaderComponent } from './header/header.component';
 import { ContentComponent } from './content/content.component';
 
+
 @Component({
   selector: 'app-profile-generador',
   standalone: true,

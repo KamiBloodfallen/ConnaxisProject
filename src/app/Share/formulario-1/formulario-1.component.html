@@ -1,4 +1,4 @@
-<div class="div-formulario">
+<div class="div-formulario" >
   <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <div class="formulario">
       <div class="tittle">
@@ -8,27 +8,46 @@
         <div class="nombre">
           <label class="form-label">Nombres</label>
           <input type="text" formControlName="nombre" class="form-control" placeholder="Ingrese su nombre">
+          <div *ngIf="myForm.get('nombre')?.invalid && (myForm.get('nombre')?.dirty || myForm.get('nombre')?.touched)">
+            <small *ngIf="myForm.get('nombre')?.errors?.['required']">El nombre es requerido.</small>
+          </div>
         </div>
         <div class="apellido">
           <label class="form-label">Apellido Paterno y Materno</label>
           <input type="text" formControlName="apellidos" class="form-control" placeholder="Ingrese sus apellidos">
+          <div *ngIf="myForm.get('apellidos')?.invalid && (myForm.get('apellidos')?.dirty || myForm.get('apellidos')?.touched)">
+            <small *ngIf="myForm.get('apellidos')?.errors?.['required']">Los apellidos son requeridos.</small>
+          </div>
         </div>
       </div>
       <div class="correo">
         <label class="form-label">Correo electronico</label>
         <input type="email" formControlName="correo" class="form-control" placeholder="Ingrese su correo electronico">
+        <div *ngIf="myForm.get('correo')?.invalid && (myForm.get('correo')?.dirty || myForm.get('correo')?.touched)">
+          <small *ngIf="myForm.get('correo')?.errors?.['required']">El correo es requerido.</small>
+          <small *ngIf="myForm.get('correo')?.errors?.['email']">Formato de correo inválido.</small>
+        </div>
       </div>
       <div class="contraseña">
         <div class="eye-pass">
           <label class="form-label">Contraseña</label>
-          <img src="eye.ico" id="eye">
+          <img [src]="eyeIcon" id="eye" (click)="togglePasswordVisibility()">
         </div>
-        <input type="password" formControlName="contras" class="form-control" placeholder="Ingrese su contraseña">
-        <span>Utilice 8 o más caracteres con una combinación de letras y números</span>
+        <input [type]="passwordFieldType" formControlName="contras" class="form-control" placeholder="Ingrese su contraseña">
+        <span>Utilice 6 o más caracteres con una combinación de letras y números</span>
+        <div *ngIf="myForm.get('contras')?.invalid && (myForm.get('contras')?.dirty || myForm.get('contras')?.touched)">
+          <small *ngIf="myForm.get('contras')?.errors?.['required']">La contraseña es requerida.</small>
+          <small *ngIf="myForm.get('contras')?.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres.</small>
+        </div>
       </div>
+      
       <div class="numero">
         <label class="form-label">Numero de celular</label>
         <input type="number" formControlName="celular" class="form-control" placeholder="Ingrese su numero de celular">
+        <div *ngIf="myForm.get('celular')?.invalid && (myForm.get('celular')?.dirty || myForm.get('celular')?.touched)">
+          <small *ngIf="myForm.get('celular')?.errors?.['required']">El número de celular es requerido.</small>
+          <small *ngIf="myForm.get('celular')?.errors?.['pattern']">Formato de número de celular inválido.</small>
+        </div>
       </div>
       <div class="genero">
         <label class="form-label">¿Cual es tu genero?</label>
@@ -42,6 +61,9 @@
           <label>
             <input type="radio" formControlName="genero" value="No-Binario"> No-Binario
           </label>
+        </div>
+        <div *ngIf="myForm.get('genero')?.invalid && (myForm.get('genero')?.dirty || myForm.get('genero')?.touched)">
+          <small *ngIf="myForm.get('genero')?.errors?.['required']">El género es requerido.</small>
         </div>
       </div>
       <div class="fechaN">
@@ -77,6 +99,9 @@
             </select>
           </div>
         </div>
+        <div *ngIf="myForm.get('fechaNacimiento')?.invalid && (myForm.get('fechaNacimiento')?.dirty || myForm.get('fechaNacimiento')?.touched)">
+          <small *ngIf="myForm.get('fechaNacimiento')?.errors?.['required']">La fecha de nacimiento es requerida.</small>
+        </div>
       </div>
       <div class="departamento">
         <label class="form-label">Departamento</label>
@@ -91,22 +116,26 @@
           <option value="Sucre">Sucre</option>
           <option value="Santa Cruz">Santa Cruz</option>
         </select>
+        <div *ngIf="myForm.get('departamento')?.invalid && (myForm.get('departamento')?.dirty || myForm.get('departamento')?.touched)">
+          <small *ngIf="myForm.get('departamento')?.errors?.['required']">El departamento es requerido.</small>
+        </div>
       </div>
       <div class="form-check">
         <input class="form-check-input" type="checkbox" formControlName="aceptarTerminos" id="flexCheckDefault">
         <label class="form-check-label" for="flexCheckDefault">
           Compartir mis datos de registro con nuestros proveedores de contenido para fines de marketing.
         </label>
+        <div *ngIf="myForm.get('aceptarTerminos')?.invalid && (myForm.get('aceptarTerminos')?.dirty || myForm.get('aceptarTerminos')?.touched)">
+          <small *ngIf="myForm.get('aceptarTerminos')?.errors?.['requiredTrue']">Debe aceptar los términos y condiciones.</small>
+        </div>
       </div>
       <div class="link">
         <p>Al crear una cuenta acepta los <a href="">Terminos de uso</a> y <a href="">Politica de privacidad</a></p>
       </div>
       <div class="boton">
-        <button type="submit" class="btn btn-dark">Siguiente</button>
+        <button type="submit" class="btn btn-dark" [disabled]="myForm.invalid">Siguiente</button>
       </div>
     </div>
   </form>
   
-  
-    
   </div>

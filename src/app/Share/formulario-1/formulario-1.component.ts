@@ -3,6 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../../service/api.service';
+import { state } from '@angular/animations';
+import { Usuario } from '../../Models/usuario.model';
+import { UserService } from '../../service/user.service';
+import { UsuarioRegister } from '../../Models/usuarioRegister.model';
 
 @Component({
   selector: 'app-formulario-1',
@@ -13,22 +17,25 @@ import { ApiService } from '../../service/api.service';
 })
 export class Formulario1Component implements OnInit {
   myForm: FormGroup;
+  passwordFieldType: string = 'password';
+  eyeIcon: string = 'eye.ico';
+
   days: number[] = Array.from({ length: 31 }, (_, i) => i + 1);
   years: number[] = this.generateYears(new Date().getFullYear(), 1950); // Genera años desde el año actual hasta 1950
 
-  constructor(private fb: FormBuilder, private router: Router, private apiService: ApiService) {
+  constructor(private fb: FormBuilder, private router: Router, private apiService: ApiService, private userService: UserService) {
 
     this.myForm = this.fb.group({
       nombre: ['', Validators.required],
       apellidos: ['', Validators.required],
       correo: ['', [Validators.required, Validators.email]],
-      contras: ['', [Validators.required, Validators.minLength(3)]],
-      celular: ['', Validators.required],
+      contras: ['', [Validators.required, Validators.minLength(6)]],
+      celular: ['', [Validators.required, Validators.pattern(/^[0-9]{8,10}$/)]],
       genero: ['', Validators.required],
       fechaNacimiento: this.fb.group({
         dia: ['', Validators.required],
         mes: ['', Validators.required],
-        año: ['', Validators.required] // Asegúrate de que el control sea 'año'
+        año: ['', Validators.required] 
       }),
       departamento: ['', Validators.required],
       aceptarTerminos: [false, Validators.requiredTrue]
@@ -42,9 +49,7 @@ export class Formulario1Component implements OnInit {
       const formData = this.myForm.value;
 
       // Formatear los datos
-
-      
-      const formatData = {
+      const formatData: UsuarioRegister =  {
         Nombre: formData.nombre,
         Apellido: formData.apellidos,
         Celular: formData.celular,
@@ -54,12 +59,20 @@ export class Formulario1Component implements OnInit {
         Contraseña: formData.contras,
         ResidenciaDepartamento: formData.departamento,
       };
-
+      
+     
       console.log('Formatted form data:', formatData);
 
       this.apiService.registrar(formatData).subscribe(
         response => {
           console.log('Registro exitoso:', response);
+          const usuario: Usuario={
+            IdUsuario:response.generador.IdUsuario,
+            Nombre:formatData.Nombre ,
+            Apellido: formatData.Apellido,
+            CorreoElectronico: formatData.CorreoElectronico,
+           };
+          this.userService.setUsuario(usuario);
           this.router.navigate(['/verificacion']);
         },
         error => {
@@ -83,4 +96,15 @@ export class Formulario1Component implements OnInit {
     }
     return years;
   }
+
+  togglePasswordVisibility(): void {
+    if (this.passwordFieldType === 'password') {
+      this.passwordFieldType = 'text';
+      this.eyeIcon = 'eye-off.ico';
+    } else {
+      this.passwordFieldType = 'password';
+      this.eyeIcon = 'eye.ico';
+    }
+  }
+
 }
