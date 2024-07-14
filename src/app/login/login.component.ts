@@ -13,6 +13,9 @@ import { Router } from '@angular/router';
 })
 
 export class LoginComponent implements OnInit{
+  
+  eyeIcon: string = 'eye.ico';
+  passwordFieldType: string = 'password';
 
    form = signal<FormGroup>(
     new FormGroup({
@@ -72,7 +75,18 @@ export class LoginComponent implements OnInit{
     console.log(this.errorMessage);
   }
   
- 
+ //funcionalidad del icon. eye
+ togglePasswordVisibility(): void {
+  if (this.passwordFieldType === 'password') {
+    this.passwordFieldType = 'text';
+    this.eyeIcon = 'eye-off.ico';
+  } else {
+    this.passwordFieldType = 'password';
+    this.eyeIcon = 'eye.ico';
+  }
+}
+
+
 }
   
 

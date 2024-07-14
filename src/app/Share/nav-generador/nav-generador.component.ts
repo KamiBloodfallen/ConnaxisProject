@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-generador',
@@ -10,4 +11,28 @@ import { Component, Input } from '@angular/core';
 })
 export class NavGeneradorComponent {
 @Input() options: string[] = []; 
+
+constructor(private router: Router, ){
+
+}
+
+handleClick(option: string) {
+  const correspondingUrl = this.getCorrespondingUrl(option); // Call a function to map options to URLs
+  if (correspondingUrl) {
+    this.router.navigate([correspondingUrl]); // Navigate to the URL using Router
+  } else {
+    console.error('No URL mapping found for "${option}"'); // Handle invalid options
+  }
+}
+getCorrespondingUrl(option: string): string | undefined {
+  const urlMap : {[
+    key:string
+  ]:string}={
+    'home': '/home',
+    'MediaSocialRegister': '/MediaSocialRegister'
+  }
+  return urlMap[option];
+}
+
+
 }
