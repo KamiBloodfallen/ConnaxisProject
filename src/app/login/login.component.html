@@ -4,31 +4,45 @@
       <div class="tittle">
         <p>Welcome</p>
       </div>  
-      <div class="correo">
-        <label class="form-label">
-          Correo electronico
-        </label>
-        <input type="text" class="form-control" formControlName="correo" placeholder="Ingrese su correo electronico">
+      <div class="box">
+        <span *ngIf= "errorCredential == true" class="error-creden">Credenciales inválidas.</span>
       </div>
-      <div class="contraseña">
-        <div class="eye-pass">
+      <div class="campos">
+        <div class="correo">
           <label class="form-label">
-            Contraseña
+            Correo electronico
           </label>
-          <img src="eye.ico" id="eye">
+          <input type="text" class="form-control"  formControlName="CorreoElectronico" placeholder="Ingrese su correo electronico">
+          <div class="box" >
+            <span *ngIf="form().get('CorreoElectronico')?.touched && form().get('CorreoElectronico')?.hasError('required')" class="error-message" >Se debe ingresar un correo electronico.</span>
+            <span *ngIf="form().get('CorreoElectronico')?.touched && form().get('CorreoElectronico')?.hasError('email')" class="error-message" >Debe ser un correo electronico.</span>
+          </div>
+        </div>
+        <div class="contraseña-general">
+          <div class="contraseña">
+            <div class="eye-pass">
+              <label class="form-label">
+                Contraseña
+              </label>
+              <img src="eye.ico" id="eye">
+            </div>
+          </div>
+          <div class="contraseña2">
+            <input type="password" class="form-control" id="exampleInputPassword1" formControlName= "password" name="password" placeholder="Ingrese su contraseña"> 
+          </div>
+          <div class="box"  >
+            <span class="error-message" *ngIf="form().get('password')?.touched && form().get('password')?.hasError('required')">Se debe ingresar una contraseña.</span>
+          </div>
+          <div class="link">
+            <p>Si no tienes una cuenta pulse <a href="/register">Aqui.</a></p>
+          </div>
         </div>
       </div>
-      <div class="contraseña2">
-        <input type="password" class="form-control" id="exampleInputPassword1" formControlName="contraseña" placeholder="Ingrese su contraseña"> 
-      </div>
-      
-      <div class="link">
-        <p>Si no tienes una cuenta pulse <a href="/register">Aqui.</a></p>
-      </div>
+        
+     
       <div class="boton">
         <button type="submit" class="btn btn-dark">Sign in</button>
       </div>
     </div>
   </form>
-  <pre>{{ form().value | json}}</pre>
   </div>
