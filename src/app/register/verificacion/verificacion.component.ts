@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { StepperComponent } from '../../Share/stepper/stepper.component';
 import { Router } from '@angular/router';
-import { UserService } from '../../service/user.service';
+import { UserService } from '../../Services/UserService/user.service';
 import { Usuario } from '../../Models/usuario.model';
-import { ApiService } from '../../service/api.service';
+import { ApiService } from '../../Services/UserService/api.service';
 
 @Component({
   selector: 'app-verificacion',

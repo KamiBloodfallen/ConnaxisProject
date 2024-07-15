@@ -2,10 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from '../../service/api.service';
+import { ApiService } from '../../Services/UserService/api.service';
 import { state } from '@angular/animations';
 import { Usuario } from '../../Models/usuario.model';
-import { UserService } from '../../service/user.service';
+import { UserService } from '../../Services/UserService/user.service';
 import { UsuarioRegister } from '../../Models/usuarioRegister.model';
 
 @Component({

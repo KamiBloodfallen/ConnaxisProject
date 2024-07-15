@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavGeneradorComponent } from '../../Share/nav-generador/nav-generador.component';
 import { HeaderComponent } from './header/header.component';
 import { ContentComponent } from './content/content.component';
-import { AuthService } from '../../Services/Auth.service';
+import { AuthService } from '../../Services/AuthService/Auth.service';
 import { Router } from '@angular/router';
 
 

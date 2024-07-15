@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ApiService } from '../../service/api.service';
+import { ApiService } from '../../Services/UserService/api.service';
 import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
-import { UserService } from '../../service/user.service';
+import { UserService } from '../../Services/UserService/user.service';
 import { Usuario } from '../../Models/usuario.model';
 
 interface SmallCard {

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from "../../../Home/homepage/header/header.component";
 import { NavGeneradorComponent } from '../../../Share/nav-generador/nav-generador.component';
-import { ApiService } from '../../../service/api.service';
+import { ApiService } from '../../../Services/UserService/api.service';
 
 @Component({
   selector: 'app-card-redes-sociales',

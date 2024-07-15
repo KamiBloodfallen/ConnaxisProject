@@ -1,7 +1,7 @@
 
 <nav>
     <ol class="navBar">
-        <li *ngFor="let option of options" class="lista">
+        <li *ngFor="let option of options" class="lista" (click)="handleClick(option)">
             {{option}}
         </li>
     </ol>
