@@ -75,7 +75,8 @@ export class LoginComponent implements OnInit{
     console.log(this.errorMessage);
   }
   
- //funcionalidad del icon. eye
+ //Funcionalidad del icon. eye en el password
+ 
  togglePasswordVisibility(): void {
   if (this.passwordFieldType === 'password') {
     this.passwordFieldType = 'text';

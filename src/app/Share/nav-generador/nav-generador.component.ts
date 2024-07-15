@@ -16,17 +16,17 @@ export class NavGeneradorComponent {
 constructor(private router: Router) {}
 
 handleClick(option: string) {
-  const correspondingUrl = this.getCorrespondingUrl(option); // Call a function to map options to URLs
+  const correspondingUrl = this.getCorrespondingUrl(option); 
   if (correspondingUrl) {
-    this.router.navigate([correspondingUrl]); // Navigate to the URL using Router
+    this.router.navigate([correspondingUrl]); 
   } else {
-    console.error(`No URL mapping found for "${option}"`); // Handle invalid options
+    console.error(`No URL mapping found for "${option}"`);
   }
 }
 
 getCorrespondingUrl(option: string): string | undefined {
-  // Define your logic to map options to URLs (replace with your actual logic)
-  const urlMap: { [key: string]: string } = { // Explicitly define type as string-keyed object
+  
+  const urlMap: { [key: string]: string } = { 
     'Mi perfil': '/home',
     'Sobre nosotros': '/about',
     

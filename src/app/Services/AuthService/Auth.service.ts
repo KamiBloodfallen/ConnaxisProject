@@ -14,16 +14,6 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  // login(data:any): Observable<any> {
-  
-  //   return this.httpClient.post<any>(this.LOGIN_URL, data).pipe(
-  //     tap(response=>{
-  //       if(response.token){
-  //         console.log(response.token);
-  //       }
-  //     })
-  //   )
-  // }
 
 public login(data: any): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -38,6 +28,12 @@ public setToken (token: string): void{
 private getToken(): string | null{
   return localStorage.getItem(this.tokenKey);
 }
+
+//Metodo para verificar si el usuario esta autentificado (se revisa si tiene un token y si este token tiene expiracion vigente)
+//Caso 1: No tiene token :false
+//Caso 2: Tiene token pero no tiene expiracion : false
+//Caso 3: Tiene token y este ha expirado: flase
+//Caso 4: True
 isAuthenticated(): boolean {
   const ahora = new Date();
   const token = this.getToken();
@@ -47,7 +43,6 @@ isAuthenticated(): boolean {
   
 
   if(!token ){
-    console.log('entre por aca boludo 2.0');
     return false;
   }else{
   let antesText = localStorage.getItem('expiracion');
@@ -56,17 +51,18 @@ isAuthenticated(): boolean {
     diferenciaMilisegundos = ahora.getTime() - antes.getTime();
     diferenciaDias =  Math.floor(diferenciaMilisegundos / (1000 * 60 * 60 * 24));
     if(diferenciaDias>60){
-      console.log('entre por aca boludo 3.0');
+     
       localStorage.removeItem(this.tokenKey);
       localStorage.removeItem('expiracion');
       return false;
     }
     }else{
-   console.log("Error en la variable de expiracion en el localstorage");    
+   console.log("Error en la variable de expiracion.");   
+   localStorage.removeItem(this.tokenKey); 
+   return false;
     }
   }
   
-  console.log('entre por aca boludo 4.0');
   return true;
 }
 public logout (){

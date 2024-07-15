@@ -19,16 +19,5 @@ export class BtLoginComponent {
 @Input() backgroundColor: string = '#fff';
 @Input() link: string = '/';
 
-/*
-constructor (private pruebaService: PruebaService){}
 
- ngOnClick (): void {
-   this.pruebaService.obtenerDatos().subscribe((data) => {
-     console.log(data);
-   });
- }
-*/
- /*
-En el HTML (click)= "ngOnClick()" para que funcione lo de arriba
- */
 }
