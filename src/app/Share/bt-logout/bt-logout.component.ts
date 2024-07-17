@@ -10,10 +10,12 @@ import { Router } from '@angular/router';
   styleUrl: './bt-logout.component.css'
 })
 export class BtLogoutComponent {
-
+  
    constructor(private authService: AuthService, private router: Router) { }
+  
 
     onClick() {
+      
       this.authService.logout();
       this.router.navigate(['/login']); 
     }
