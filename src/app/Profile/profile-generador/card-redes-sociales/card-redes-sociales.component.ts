@@ -13,6 +13,8 @@ import { ApiService } from '../../../Services/UserService/api.service';
 export class CardRedesSocialesComponent {
   navOptions: string[] = ['Mi perfil', 'Mis redes sociales', 'Mis preferencias', 'Mis propuestas', 'Configuracion'];
   
+  instagramLink: string = 'https://www.instagram.com/example';
+
   constructor(private apiService:ApiService){
 
   }
