@@ -21,25 +21,25 @@
                     </div>
                     <p>¡Porque aquí más es mejor! Registra todas las cuentas que tengas activas en redes sociales. Para ello sólo tienes que pinchar en la red que quieras añadir.</p>
                     <div class="redesSociales">
-                        <img src="logo-instagram.png" [attr.alt]="instagramLink" (click)="getUrlInstagram()">
+                        <img src="logo-instagram.png"  (click)="getUrlInstagram()">
                         <img src="logo-tiktok.png" alt="">
                         <img src="logo-youtube.png" alt="">
                     </div>
-                    <div class="cardRedes">
+                    <div *ngFor="let card of cards" class="cardRedes">
                         <div class="logoRedSocial">
-                            <img src="logo-instagram.png" alt="">
+                          <img [src]="card.logo" alt="">
                         </div>
                         <div class="fotoPerfil">
-                            <img src="profile_photo.png" alt="">
+                          <img [src]="card.profilePhoto" alt="">
                         </div>
                         <div class="datosUsuario">
-                            <h5>Nicol Bustamante</h5>
-                            <p>nicol.bustamantegmail.com</p>
+                          <h5>{{ card.name }}</h5>
+                          <p>{{ card.email }}</p>
                         </div>
                         <div class="seguidores">
-                            <label>seguidores:12k</label>
+                          <label>seguidores:{{ card.followers }}</label>
                         </div>
-                    </div>
+                      </div>
                 </div>
             </div>
     </div>  

@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { UserService } from '../../Services/UserService/user.service';
 import { Usuario } from '../../Models/usuario.model';
+import { ActivatedRoute } from '@angular/router';
 
 interface SmallCard {
   id: number;
@@ -74,13 +75,23 @@ export class Formulario2Component {
   form: FormGroup;
   
   listaInteres:string[]=[];
+  private IdUsuario=0;
 
-  constructor(private fb: FormBuilder, private apiService: ApiService,private router: Router,private userService:UserService) {
+  constructor(private fb: FormBuilder, private apiService: ApiService,private router: Router,private userService:UserService,private route:ActivatedRoute) {
     this.form = this.fb.group({
       Nombre_perfil: [''],
       Descripcion: [''],
       selectedOption: [null] // Add this control to handle the select input
     });
+  }
+
+  ngOnInit(){
+    this.route.queryParams.subscribe(params => {
+      this.IdUsuario =params['IdUsuario'];
+    });
+    if(this.IdUsuario){
+      console.log("Este es el id del usuario"+this.IdUsuario)
+    }
   }
 
   addCard() {
@@ -107,7 +118,7 @@ export class Formulario2Component {
   }
 
   onSubmit() {
-    const idusu = 3;
+    const idusu = this.IdUsuario;
     const formData = this.form.value;
     const lista=this.listaInteres.join(", ");
     const descripcion ={ 

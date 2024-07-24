@@ -26,9 +26,10 @@ export class VerificacionComponent {
 
   public sendCorreo(){
     const correo={
-      CorreoElectronico:this.usuario?.CorreoElectronico
+      CorreoElectronico:this.usuario?.CorreoElectronico,
+      IdUsuario:this.usuario?.IdUsuario
     }
-    console.log("Correo del usuario "+this.usuario?.CorreoElectronico);
+    console.log("Correo del usuario "+this.usuario?.CorreoElectronico+" Id del usuario:"+this.usuario?.IdUsuario);
     if (this.usuario) {
       this.apiService.sendCorreo(correo).subscribe(
         response => {
