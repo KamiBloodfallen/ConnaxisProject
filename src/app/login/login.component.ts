@@ -2,7 +2,9 @@ import { Component, signal, OnInit} from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule} from '@angular/common';
 import { AuthService } from '../Services/AuthService/Auth.service';
+import { UserService } from '../Services/UserService/user.service';
 import { Router } from '@angular/router';
+import { Usuario } from '../Models/usuario.model';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +29,7 @@ export class LoginComponent implements OnInit{
   
   errorMessage: string | null = null;
   errorCredential: boolean | null =false;
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private userService: UserService) { }
  
 
   ngOnInit() {
@@ -52,6 +54,16 @@ export class LoginComponent implements OnInit{
           next: (response) => {
             if (response.token) {
               this.authService.setToken(response.token);
+              
+              const larauser = response.usuario;
+              const usuario: Usuario={
+                IdUsuario: larauser.IdUsuario,
+                Nombre: larauser.Nombre,
+                Apellido: larauser.Apellido,
+                CorreoElectronico: larauser.CorreoElectronico,
+               };
+
+              this.userService.setUsuario(usuario);
               this.router.navigate(['/profile']); 
               this.errorMessage = null;
               this.errorCredential=false;

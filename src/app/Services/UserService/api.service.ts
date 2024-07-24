@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError, of } from 'rxjs';
 import { UsuarioRegister } from '../../Models/usuarioRegister.model';
 import { Usuario } from '../../Models/usuario.model';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class ApiService {
   private webUrl = 'http://localhost:8000';
 
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private userService: UserService) {}
 
   public registro2(data:any){
     return this.http.post(this.apiUrl+'/registro',data);
@@ -52,5 +53,45 @@ export class ApiService {
   
   public getUrlInstagram(): Observable<any>{
     return this.http.get<any>(`${this.apiUrl}/instagram`);
+  }
+
+  public getUrlYoutube(): Observable<any>{
+    return this.http.get<any>(`${this.apiUrl}/youtube`);
+  }
+
+  
+public createTokenYoutube(codeYoutube: String): Observable<any> {
+
+
+  if (!codeYoutube) {
+    return throwError(() => new Error('El codigo de confirmación de youtube no existe'));
+  }
+
+  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+  return this.http.post<any>(`${this.apiUrl}/youtube-createTokenYoutube`, codeYoutube, { headers })
+}
+
+ 
+  public saveTokenYoutube (tokenYoutube: String): Observable<any>
+  {
+    
+    if (!tokenYoutube){
+      return throwError(() => new Error('El token de youtube no existe'));
+    }
+    const usuario= this.userService.getUsuario();
+
+    if (!usuario){
+      return throwError(() => new Error('El modelo del usuario no existe'));
+    }
+    
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    const data = {
+      IdUsuario: usuario.IdUsuario,
+      tokenYoutube: tokenYoutube
+      };
+
+    return this.http.post<any>(`${this.apiUrl}/youtube-saveTokenYoutube`,data,{headers});
   }
 }
