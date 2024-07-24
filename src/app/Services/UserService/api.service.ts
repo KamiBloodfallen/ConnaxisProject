@@ -46,13 +46,18 @@ export class ApiService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    let params = new HttpParams().set('CorreoElectronico', data.CorreoElectronico);
+    let params = new HttpParams().set('CorreoElectronico', data.CorreoElectronico).set('IdUsuario', data.IdUsuario);;
 
     return this.http.get<any>(`${this.webUrl}/sendCorreo`,{ headers, params });
   }
   
   public getUrlInstagram(): Observable<any>{
     return this.http.get<any>(`${this.apiUrl}/instagram`);
+  }
+
+  public registroInstagram(data:any): Observable<any>{
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<any>(`${this.apiUrl}/instagramToken`, data, { headers });
   }
 
   public getUrlYoutube(): Observable<any>{
