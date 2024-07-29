@@ -99,4 +99,42 @@ public createTokenYoutube(codeYoutube: String): Observable<any> {
 
     return this.http.post<any>(`${this.apiUrl}/youtube-saveTokenYoutube`,data,{headers});
   }
+
+  public cardData (codigo: String): Observable<any>
+  {
+    if (!codigo){
+      return throwError(() => new Error('El codigo de la cuenta no existe'));
+    }
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const data = {
+      IdCuenta: codigo,
+      };
+    return this.http.post<any>(`${this.apiUrl}/youtube-cardData`,data,{headers});
+
+  }
+
+  // public cardData2 (codigo: String): Observable<any>
+  // {
+  //   if (!codigo){
+  //     return throwError(() => new Error('El codigo de la cuenta no existe'));
+  //   }
+  //   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  //   const data = {
+  //     IdCuenta: codigo,
+  //     };
+  //   return this.http.post<any>(`${this.apiUrl}/youtube-cardData2`,data,{headers});
+  // }
+  // public setIdAccount (token:string): Observable <any>{
+  //   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  //   const usuario= this.userService.getUsuario();
+  //   if (!usuario){
+  //     return throwError(() => new Error('El modelo del usuario no existe'));
+  //   }
+  //   const data = {
+  //     IdUsuario: usuario.IdUsuario,
+  //     Token: token
+  //     };
+  //   return this.http.post<any>(`${this.apiUrl}/youtube-setIdAccount`,data,{headers});
+  // }
+
 }

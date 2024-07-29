@@ -60,7 +60,11 @@ export class LoginComponent implements OnInit{
                 IdUsuario: larauser.IdUsuario,
                 Nombre: larauser.Nombre,
                 Apellido: larauser.Apellido,
+                Nombre_perfil: larauser.Nombre_perfil,
+                Contacto: larauser.Celular,
+                Descripcion: larauser.Descripcion,
                 CorreoElectronico: larauser.CorreoElectronico,
+                ResidenciaDepartamento: larauser.ResidenciaDepartamento,
                };
 
               this.userService.setUsuario(usuario);

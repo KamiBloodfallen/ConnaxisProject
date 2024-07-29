@@ -6,6 +6,7 @@ import { AuthService } from '../../Services/AuthService/Auth.service';
 import { Router } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-profile-generador',
   standalone: true,
@@ -15,13 +16,16 @@ import { Router } from '@angular/router';
 })
 export class ProfileGeneradorComponent implements OnInit{
   navOptions: string[] = ['Mi perfil', 'Mis redes sociales', 'Mis preferencias', 'Mis propuestas', 'Configuracion'];
+  
+  
 
   constructor(private authService: AuthService, private router: Router) { }
    ngOnInit() {
      if (this.authService.isAuthenticated()) {
+     
       
      }else{
-      console.log("No lo revises");
+      
        this.router.navigate(['/login']); 
      }
    }

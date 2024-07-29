@@ -34,6 +34,7 @@ export class CardRedesSocialesComponent implements OnInit{
   banderaTiktok:boolean= false;
   cards: CardRed[] = [];
   usuario: Usuario | null = null;
+ 
   
   constructor(private apiService:ApiService, private router:Router, private activatedRoute: ActivatedRoute,private useService: UserService){
 
@@ -58,8 +59,34 @@ export class CardRedesSocialesComponent implements OnInit{
         response => {
           console.log('Solicitud de url enviada exitosamente:', response.tokenYoutube);
           this.banderaYoutube= false;
-          this.apiService.saveTokenYoutube(response.token);
-           
+          this.apiService.saveTokenYoutube(response.token).subscribe(
+            response => {
+             if(response.confirmacion == true){
+              this.apiService.cardData(response.cuenta).subscribe(
+                response => {
+                  const newCard: CardRed = {
+                    logo: 'logo-youtube.png',
+                    profilePhoto: response.foto,
+                    name: response.nombre,
+                    email: response.email,
+                    followers: response.followers
+                  };
+                  this.cards.push(newCard);
+                },
+                error => {
+                  this.banderaYoutube=false;
+                  console.error('Error al crear la card', error);
+                }
+              )
+             }
+              
+            },
+            error => {
+              this.banderaYoutube=false;
+              console.error('Error al crear la card', error);
+            }
+          ) 
+          //this.apiService.setIdAccount(response.token);
         },
         error => {
           this.banderaYoutube=false;
@@ -69,16 +96,13 @@ export class CardRedesSocialesComponent implements OnInit{
     }
 
     this.usuario = this.useService.getUsuario();
-    this.router.queryParams.subscribe(params => {
+    this.activatedRoute.queryParams.subscribe(params => {
       const codigo ={
         code:params['code'],
         social:params['social']
       }; 
       
     });
-
-
-
 
   }
   getCodeYoutube(){  

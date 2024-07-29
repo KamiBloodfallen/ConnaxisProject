@@ -1,13 +1,26 @@
 <body>
     <div class="inf-personal">
         <div class="box-foto">
-            <div class="foto-perfil"></div>
+            <div class="foto-perfil" >
+                <img src="assets/img/user_ico.ico"  alt="usuario" class="us" >
+            </div>
         </div>
         <div class="user-name">
-            <h2>User name</h2>
+            <h2>{{NombrePerfil}}</h2>
+        </div>
+        <div class="descripcion-box">
+            <p class="descripcion">
+                {{Descripcion}}
+            </p>
+        </div>
+        <div class="departamento-box">
+            <p class="departamento">{{Departamento}}</p>
+        </div>
+        <div class="contacto-box">
+            <p class="contato">{{Contacto}}</p>
         </div>
     </div>
     <div class="estadisticas">
-    <h2>Estadisticas de la cuenta</h2>    
+    <h2 class="estadisticas-titulo">Estadisticas de la cuenta</h2>    
     </div>
 </body>
